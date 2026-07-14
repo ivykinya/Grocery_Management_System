@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Notifications</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f5f5f5;
+        }
+
+
+        .notification-container {
+            position: relative;
+            display: inline-block;
+        }
+
+
+        .bell {
+            font-size: 45px;
+            cursor: pointer;
+        }
+
+
+        .count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+
+
+        .notification-box {
+
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: white;
+            width: 300px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: left;
+
+        }
+
+
+        .notification-box p {
+
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+
+        }
+
+
+        button {
+
+            padding: 10px 15px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+
+        }
+
+
+        button:hover {
+
+            background-color: darkblue;
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<h1>My Website Notifications</h1>
+
+
+<button onclick="addNotification()">
+    New Notification
+</button>
+
+<button onclick="clearNotifications()">
+    Clear All
+</button>
+
+
+<br><br>
+
+
+<div class="notification-container">
+
+
+    <div class="bell" onclick="showNotifications()">
+
+        🔔
+
+        <span class="count" id="notificationCount">
+            3
+        </span>
+
+    </div>
+
+
+
+    <div class="notification-box" id="notificationBox">
+
+
+        <p>✅ Product added successfully</p>
+
+        <p>🎉 New discount available</p>
+
+        <p>📦 Order shipped</p>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+<script>
+
+
+function showNotifications(){
+
+    let box = document.getElementById("notificationBox");
+
+    let count = document.getElementById("notificationCount");
+
+
+    if(box.style.display === "block"){
+
+        box.style.display = "none";
+
+    }
+
+    else{
+
+        box.style.display = "block";
+
+        count.style.display = "none";
+
+    }
+
+}
+
+
+
+
+function addNotification(){
+
+
+    let count = document.getElementById("notificationCount");
+
+
+    let number = parseInt(count.innerHTML);
+
+
+    number = number + 1;
+
+
+    count.innerHTML = number;
+
+
+    count.style.display = "inline";
+
+
+}
+
+
+
+
+
+function clearNotifications(){
+
+
+    let box = document.getElementById("notificationBox");
+
+
+    box.innerHTML = "<p>No new notifications</p>";
+
+
+
+    let count = document.getElementById("notificationCount");
+
+
+    count.innerHTML = "0";
+
+
+    count.style.display = "inline";
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>
